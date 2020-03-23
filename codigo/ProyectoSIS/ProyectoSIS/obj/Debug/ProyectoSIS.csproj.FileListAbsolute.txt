@@ -1,0 +1,9 @@
+E:\codigo\ProyectoSIS\ProyectoSIS\bin\Debug\ProyectoSIS.exe.config
+E:\codigo\ProyectoSIS\ProyectoSIS\bin\Debug\ProyectoSIS.exe
+E:\codigo\ProyectoSIS\ProyectoSIS\bin\Debug\ProyectoSIS.pdb
+E:\codigo\ProyectoSIS\ProyectoSIS\obj\Debug\ProyectoSIS.csprojResolveAssemblyReference.cache
+E:\codigo\ProyectoSIS\ProyectoSIS\obj\Debug\ProyectoSIS.exe
+E:\codigo\ProyectoSIS\ProyectoSIS\obj\Debug\ProyectoSIS.pdb
+E:\codigo\ProyectoSIS\ProyectoSIS\obj\Debug\ProyectoSIS.MainForm.resources
+E:\codigo\ProyectoSIS\ProyectoSIS\obj\Debug\ProyectoSIS.csproj.GenerateResource.Cache
+E:\codigo\ProyectoSIS\ProyectoSIS\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll
