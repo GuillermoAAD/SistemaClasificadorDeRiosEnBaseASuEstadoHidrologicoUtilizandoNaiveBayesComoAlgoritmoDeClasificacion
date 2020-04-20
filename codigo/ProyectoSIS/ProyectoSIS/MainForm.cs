@@ -18,6 +18,9 @@ namespace ProyectoSIS
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		AdministradorRio adminRio;
+		rio rios;
+		
 		public MainForm()
 		{
 			//
@@ -28,10 +31,27 @@ namespace ProyectoSIS
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
+			
 		}
 		void MainFormLoad(object sender, EventArgs e)
 		{
-	
+			adminRio = new AdministradorRio();
+			//adminRio.extraerDeBD();
+			cargarTablaDeRiosYTodosSusDatos();
+			
+		}
+		void Button1Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("holo");
+		}
+		
+		void cargarTablaDeRiosYTodosSusDatos()
+		{
+			dataGridView1.Columns.Clear();			
+			dataGridView1.DataSource = adminRio.listarRiosPorEstadoHidrologico();
+
+			dataGridView2.Columns.Clear();
+			dataGridView2.DataSource = adminRio.mostrarDatosHidrologicos();						
 		}
 	}
 }
