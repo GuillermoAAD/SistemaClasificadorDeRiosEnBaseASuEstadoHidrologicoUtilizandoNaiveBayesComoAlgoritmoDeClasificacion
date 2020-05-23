@@ -25,13 +25,7 @@ namespace ProyectoSIS
 		
 		public rio()
 		{
-			nombre = "";
-			corriente = 0.0;
-			profundidad = 0.0;
-			temperatura = 0.0;
-			numeroEspecies = 0;
-			gradoContaminacion = 0.0;
-			estadoHidrologico = "";
+			limpiarRio();
 		}
 		
 		public void setNombre(string n)
@@ -95,6 +89,16 @@ namespace ProyectoSIS
 		public string getEstadoHidrologico()
 		{
 			return estadoHidrologico;
+		}
+		
+		public void limpiarRio(){
+			nombre = "";
+			corriente = 0.0;
+			profundidad = 0.0;
+			temperatura = 0.0;
+			numeroEspecies = 0;
+			gradoContaminacion = 0.0;
+			estadoHidrologico = "";
 		}
 	}
 }

@@ -165,7 +165,6 @@ namespace ProyectoSIS
 			// 
 			// label12
 			// 
-			this.label12.AutoSize = true;
 			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label12.ForeColor = System.Drawing.Color.DarkGray;
 			this.label12.Location = new System.Drawing.Point(415, 144);
@@ -173,6 +172,7 @@ namespace ProyectoSIS
 			this.label12.Size = new System.Drawing.Size(150, 20);
 			this.label12.TabIndex = 23;
 			this.label12.Text = "SIN CLASIFICAR";
+			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label11
 			// 
@@ -189,6 +189,7 @@ namespace ProyectoSIS
 			// 
 			this.button2.AutoSize = true;
 			this.button2.BackColor = System.Drawing.SystemColors.Control;
+			this.button2.Enabled = false;
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button2.Location = new System.Drawing.Point(403, 194);
 			this.button2.Name = "button2";
@@ -196,6 +197,7 @@ namespace ProyectoSIS
 			this.button2.TabIndex = 21;
 			this.button2.Text = "Guardar instancia clasificada\r\nen la base de datos";
 			this.button2.UseVisualStyleBackColor = false;
+			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// panel1
 			// 
@@ -219,6 +221,7 @@ namespace ProyectoSIS
 			// 
 			this.button1.AutoSize = true;
 			this.button1.BackColor = System.Drawing.SystemColors.Control;
+			this.button1.Enabled = false;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.Location = new System.Drawing.Point(83, 240);
 			this.button1.Name = "button1";
@@ -234,7 +237,8 @@ namespace ProyectoSIS
 			this.textBox5.Location = new System.Drawing.Point(157, 177);
 			this.textBox5.Name = "textBox5";
 			this.textBox5.Size = new System.Drawing.Size(149, 21);
-			this.textBox5.TabIndex = 17;
+			this.textBox5.TabIndex = 14;
+			this.textBox5.TextChanged += new System.EventHandler(this.TextBox5TextChanged);
 			// 
 			// textBox6
 			// 
@@ -242,7 +246,8 @@ namespace ProyectoSIS
 			this.textBox6.Location = new System.Drawing.Point(157, 204);
 			this.textBox6.Name = "textBox6";
 			this.textBox6.Size = new System.Drawing.Size(149, 21);
-			this.textBox6.TabIndex = 16;
+			this.textBox6.TabIndex = 15;
+			this.textBox6.TextChanged += new System.EventHandler(this.TextBox6TextChanged);
 			// 
 			// textBox3
 			// 
@@ -250,7 +255,8 @@ namespace ProyectoSIS
 			this.textBox3.Location = new System.Drawing.Point(157, 123);
 			this.textBox3.Name = "textBox3";
 			this.textBox3.Size = new System.Drawing.Size(149, 21);
-			this.textBox3.TabIndex = 13;
+			this.textBox3.TabIndex = 12;
+			this.textBox3.TextChanged += new System.EventHandler(this.TextBox3TextChanged);
 			// 
 			// textBox4
 			// 
@@ -258,7 +264,8 @@ namespace ProyectoSIS
 			this.textBox4.Location = new System.Drawing.Point(157, 150);
 			this.textBox4.Name = "textBox4";
 			this.textBox4.Size = new System.Drawing.Size(149, 21);
-			this.textBox4.TabIndex = 12;
+			this.textBox4.TabIndex = 13;
+			this.textBox4.TextChanged += new System.EventHandler(this.TextBox4TextChanged);
 			// 
 			// textBox2
 			// 
@@ -267,14 +274,16 @@ namespace ProyectoSIS
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(149, 21);
 			this.textBox2.TabIndex = 11;
+			this.textBox2.TextChanged += new System.EventHandler(this.TextBox2TextChanged);
 			// 
 			// textBox1
 			// 
 			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.Location = new System.Drawing.Point(157, 69);
+			this.textBox1.Location = new System.Drawing.Point(157, 70);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(149, 21);
 			this.textBox1.TabIndex = 10;
+			this.textBox1.TextChanged += new System.EventHandler(this.TextBox1TextChanged);
 			// 
 			// label10
 			// 
@@ -395,6 +404,7 @@ namespace ProyectoSIS
 			// 
 			this.button5.AutoSize = true;
 			this.button5.BackColor = System.Drawing.SystemColors.Control;
+			this.button5.Enabled = false;
 			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button5.Location = new System.Drawing.Point(114, 177);
 			this.button5.Name = "button5";
@@ -429,6 +439,7 @@ namespace ProyectoSIS
 			// 
 			this.button4.AutoSize = true;
 			this.button4.BackColor = System.Drawing.SystemColors.Control;
+			this.button4.Enabled = false;
 			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button4.Location = new System.Drawing.Point(143, 113);
 			this.button4.Name = "button4";
@@ -541,7 +552,6 @@ namespace ProyectoSIS
 			this.dataGridView2.ReadOnly = true;
 			this.dataGridView2.Size = new System.Drawing.Size(678, 231);
 			this.dataGridView2.TabIndex = 0;
-			//this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2CellContentClick);
 			// 
 			// Nombre
 			// 
@@ -595,7 +605,6 @@ namespace ProyectoSIS
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Sistema clasificador de ríos en base a su estado hidrológico utilizando Naīve " +
 	"Bayes como algoritmo de clasificación";
-			this.TopMost = true;
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

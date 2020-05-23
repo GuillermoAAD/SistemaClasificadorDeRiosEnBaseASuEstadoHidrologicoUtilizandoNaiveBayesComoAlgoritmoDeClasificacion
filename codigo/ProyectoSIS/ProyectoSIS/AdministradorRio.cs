@@ -31,13 +31,16 @@ namespace ProyectoSIS
 				
 		public AdministradorRio()
 		{
+			inicializarAdminRio();
+		}
+		
+		public void inicializarAdminRio(){
 			rios = new List<rio>();
 			datosDeConexionBD = "datasource=127.0.0.1;port=3306;username=mw;password=1234;database=rios;";
 			//consulta = "";
 			conexionAbierta = false;
 			rios = extraerDeBD();//inicializa la lista derios, con lo de la base de datos
 		}
-		
 		
 		public void cargarArchivo()
 		{
@@ -48,15 +51,92 @@ namespace ProyectoSIS
 		
 		public List<rio> extraerDeBD()
 		{
-			string consultaSQL = "SELECT `nombre_rio`,`corriente`,`profundidad`,"+
+			string consultaSQL = "SELECT DISTINCT `nombre_rio`,`corriente`,`profundidad`,"+
 								 "`temperatura`,`numero_especies`,`estado_hidrologico` "+
 								 "FROM `rio` "+
-								 "JOIN `hidrologia` ON `rio`.`id_rio` = `hidrologia`.`id_rio`;";
+								 "JOIN `hidrologia` ON `rio`.`id_rio` = `hidrologia`.`id_rio` " +
+								 "ORDER BY `id_hidrologico` DESC;";
 			consultaEnBD(consultaSQL);
 			return rios;
 		}
 		
-		public void guardarInstanciaEnBD(){}
+		public List<rio> getListaRios()
+		{
+			return rios;
+		}
+		
+		public int obtenerUltimoID(){
+			string ultimoID = "SELECT MAX(id_rio) FROM rio";
+			//conectarBD();
+			
+			conexionDB = new MySqlConnection(datosDeConexionBD);
+			
+			conexionDB.Open();
+			
+			MySqlCommand comandosDB; //
+			MySqlDataReader resultadoConsulta; //
+			//conexionDB = new MySqlConnection(datosDeConexionBD);
+			comandosDB = new MySqlCommand(ultimoID, conexionDB);
+			comandosDB.CommandTimeout = 60;
+
+			// Ejecuta la consultas
+			resultadoConsulta = comandosDB.ExecuteReader();
+			
+			int id = 0;
+			while (resultadoConsulta.Read())
+			{
+				id = resultadoConsulta.GetInt16(0);
+			}
+
+			desconectarBD();
+			
+			return id;
+		}
+		
+		public void consultaguardarDB(string consulta){
+
+			
+			conexionDB = new MySqlConnection(datosDeConexionBD);
+			
+			conexionDB.Open();
+			
+			MySqlCommand comandosDB; //
+			//mysql resultadoConsulta; //
+			//conexionDB = new MySqlConnection(datosDeConexionBD);
+			comandosDB = new MySqlCommand(consulta, conexionDB);
+			//comandosDB.CommandTimeout = 60;
+
+			// Ejecuta la consultas
+			comandosDB.ExecuteNonQuery();
+			
+			desconectarBD();
+			
+			
+		}
+		
+		public void guardarInstanciaEnBD(rio unRio){
+			
+			string insertaRio = "INSERT INTO rio(id_rio,nombre_rio) VALUES(NULL,'"+
+				unRio.getNombre()+"');";
+			
+			consultaguardarDB(insertaRio);
+			
+			int id = obtenerUltimoID();
+			
+			string insertaHidrologia = "INSERT INTO hidrologia(id_hidrologico,id_rio,corriente,profundidad,"+
+								 		"temperatura,numero_especies,grado_contaminacion,estado_hidrologico) "+
+										"VALUES(NULL,"+id+","+
+										unRio.getCorriente()+","+
+										unRio.getProfundidad()+","+
+										unRio.getTemperatura()+","+
+										unRio.getNumeroEspecies()+","+
+										unRio.getGradoContaminacion()+",'"+
+										unRio.getEstadoHidrologico()+"');";
+
+			
+			consultaguardarDB(insertaHidrologia);
+			MessageBox.Show("Instancia agregada a la base de datos.");
+		}
 		
 		public DataTable listarRiosPorEstadoHidrologico()
 		{
